@@ -1,10 +1,10 @@
 import React from "react";
 
-import HorizontalPagination from "../../components/Pagination/HorizontalPagination/HorizontalPagination";
-import VerticalPagination from "../../components/Pagination/VerticalPagination/VerticalPagination";
-import TotalSignups from "../../components/TotalSignups/TotalSignups";
-import GenderSort from "../../components/GenderSort/GenderSort";
-import Meetings from "../../components/Meetings/Meetings";
+import HorizontalPagination from "../Pagination/HorizontalPagination/HorizontalPagination";
+import VerticalPagination from "../Pagination/VerticalPagination/VerticalPagination";
+// import TotalSignups from "../../components/TotalSignups/TotalSignups";
+import GenderSort from "../GenderSort/GenderSort";
+import Meetings from "../Meetings/Meetings";
 
 import funds from "../../assets/icons/funds.svg";
 import Group from "../../assets/icons/Group.svg";
@@ -13,9 +13,9 @@ import history from "../../assets/icons/history.svg";
 import verificationIcon from "../../assets/icons/verificationIcon.svg";
 import lockedPadlock from "../../assets/icons/lockedPadlock.svg";
 
-import styles from "./MainBorad.module.css";
+import styles from "./MainBoard.module.css";
 
-const MainBorad = ({
+const MainBoard = ({
   individualsData,
   companiesData,
   individuals,
@@ -88,10 +88,6 @@ const MainBorad = ({
               </div>
             </div>
             <div className={styles.displayInfo}>
-              <TotalSignups
-                doughnut={doughnut}
-                onDoughnutLenght={onDoughnutLenght}
-              />
 
               <div className={styles.sort}>
                 <GenderSort
@@ -135,4 +131,4 @@ const MainBorad = ({
   );
 };
 
-export default MainBorad;
+export default MainBoard;

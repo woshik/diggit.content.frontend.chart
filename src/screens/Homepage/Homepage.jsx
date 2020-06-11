@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Header from "../../components/Header/Header";
-import MainBorad from "../../components/MainBorad/MainBorad";
+import MainBoard from "../../components/MainBoard/MainBoard";
 import { fakeData } from "../../services/individuals";
 import { fakeCompanies } from "../../services/companies";
 import styles from "./Homepage.module.css";
@@ -151,7 +151,7 @@ const Homepage = () => {
         dropdownData={header_select}
         displayed={header_displayed}
       />
-      <MainBorad
+      <MainBoard
         individualsData={individualsData}
         companiesData={companiesData}
         individuals={individuals}
