@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 
 import HorizontalPagination from "../Pagination/HorizontalPagination/HorizontalPagination";
 import VerticalPagination from "../Pagination/VerticalPagination/VerticalPagination";
-// import TotalSignups from "../../components/TotalSignups/TotalSignups";
+
 import GenderSort from "../GenderSort/GenderSort";
 import Meetings from "../Meetings/Meetings";
 
@@ -14,6 +14,17 @@ import verificationIcon from "../../assets/icons/verificationIcon.svg";
 import lockedPadlock from "../../assets/icons/lockedPadlock.svg";
 
 import styles from "./MainBoard.module.css";
+
+const IndividualChart = React.lazy(() =>
+  import("../IndividualChart/IndividualChart")
+);
+const CompanyChart = React.lazy(() =>
+  import("../CompanyChart/CompanyChart")
+);
+
+const TotalSignups = React.lazy(() =>
+  import("../TotalSignups/TotalSignups")
+);
 
 const MainBoard = ({
   individualsData,
@@ -58,6 +69,16 @@ const MainBoard = ({
     { id: 2, name: "Companies" },
   ];
 
+  const chartLabels = [
+    "Jun'19",
+    "Jul'19",
+    "Aug'19",
+    "Sep'19",
+    "Oct'19",
+    "Nov'19",
+    "Dec'19",
+  ];
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.mainBoard}>
@@ -80,14 +101,28 @@ const MainBoard = ({
             <div className={styles.displayCharts}>
               <div className={styles.upperChart}>
                 {/* Individuals Chart */}
-                {/* Required data: individuals */}
+                <Suspense fallback={""}>
+                  <IndividualChart
+                    chartLabels={chartLabels}
+                  />
+                </Suspense>
               </div>
               <div className={styles.lowerChart}>
                 {/* Companies Chart */}
-                {/* Required data: companies */}
+                <Suspense fallback={""}>
+                  <CompanyChart chartLabels={chartLabels} />
+                </Suspense>
               </div>
             </div>
             <div className={styles.displayInfo}>
+              <div className={styles.totalSignUp}>
+                <Suspense fallback={""}>
+                  <TotalSignups
+                    individuals={individualsData}
+                    companies={companiesData}
+                  />
+                </Suspense>
+              </div>
 
               <div className={styles.sort}>
                 <GenderSort
