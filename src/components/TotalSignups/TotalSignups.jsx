@@ -23,13 +23,13 @@ const TotalSignups = ({ individuals, companies }) => {
   return (
     <Doughnut
       data={DoughnutData}
-      width={100}
-      height={50}
       options={{
         legend: {
           display: true,
           position: "right",
         },
+        width: "200",
+        height: "200",
       }}
     />
   );
